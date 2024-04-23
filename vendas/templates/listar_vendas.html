@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}    
+
+      
+{% block page_title %}
+    Registros de Vendas
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Registro de vendas</h1>
+
+        {% if registro_vendas_list  %}
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Cliente</th>
+                    <th scope="col">CPF do Cliente</th>
+                    <th scope="col">telefone do Cliente</th>
+                    <th scope="col">Nome do Produto</th>
+                    <th scope="col">Preço do Produto</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col">Data de Venda</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for registro in registro_vendas_list  %}
+                </tr>
+                        <td>{{ registro.id }}</td>
+                        <td>{{ registro.nome_cliente }}</td>
+                        <td>{{ registro.cpf_cliente }}</td>
+                        <td>{{ registro.telefone_cliente }}</td>
+                        <td>{{ registro.nome_produto }}</td>
+                        <td>{{ registro.preco_produto }}</td>
+                        <td>{{ registro.situação_produto }}</td>
+                        <td>{{ registro.data_venda }}</td>
+                        <td>
+                            <a href="#" class="btn btn-warning">Editar</a>
+                            <a href="#" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                
+                
+                </tbody>
+            </table>
+        {% else %}
+            <p>Não há vendas registradas.</p>
+        {% endif %}
+       
+        
+          <a href={% url "adicionar_vendas" %} class="btn btn-success btn-lg">Adicionar venda</a>
+
+{% endblock content %}

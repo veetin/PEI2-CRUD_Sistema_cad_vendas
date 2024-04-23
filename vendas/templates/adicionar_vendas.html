@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block head %}
+
+<link rel="stylesheet" href= "{% static 'adicionar_vendas/css/adicionar_vendas.css'%}">
+
+{% endblock head %}
+
+{% block page_title %}
+
+    Adicionar Vendas
+
+{% endblock page_title %}
+
+{% block content %}
+       
+        <section>
+            
+            <form action="{% url "adicionar_vendas" %}" method="POST" enctype='multipart/form-data'> {% csrf_token %}
+                <h1 class="titulo">Adicionar novo registro</h1>
+                <h2 class="titulo">Informações do Cliente</h2>
+                <hr>
+    
+                <div class="col-md">
+                    <label for="">Nome do cliente:</label>
+                    <input type="text" class="form-control form-control-lg" name="nome_cliente" placeholder="Nome do Cliente">
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <label for="">CPF:</label>
+                        <input type="number" class="form-control form-control-lg" name="cpf" placeholder="Apenas os Números">
+    
+                    </div>
+                    <div class="col-md">
+                        <label for="">Telefone:</label>
+                        <input type="number" class="form-control form-control-lg" name="telefone" placeholder="Apenas os Números">
+                    </div>
+                </div>
+    
+                <br>
+                <br>
+    
+                <h2 class="titulo">Informações do Produto</h2>
+                <hr>
+                <div class="col-md">
+                    <label for="">Nome do produto:</label>
+                    <input type="text" name="nome_produto" id="" class="form-control form-control-lg" placeholder="Nome do produto">
+                </div>
+    
+                <div class="row"> 
+                    <div class="col-md">
+                        <label for="">Preço:</label>
+                        <input type="floatformat" name="preco_produto" id="" class="form-control form-control-lg" placeholder="Valor do produto (R$)">
+                    </div>
+                    <div class="col-md">
+                        <label for="">Situação:</label>
+                        <select name="situacao" class="form-select" id="">
+                            <option value="1">Pago</option>
+                            <option value="0">Não pago</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <label for="">Observação:</label>
+                <textarea name="observacao" class="form-control form-control-lg"></textarea>
+                <br>
+                <div class="row">
+                    <div class="col-md">
+                        <input type="submit" value="Adicionar" class="btn btn-success btn-dark-color">
+                    </div>
+                    <div class="col-md btn-voltar">
+                        <a class=" btn btn-primary btn" href={% url "listar_vendas" %} role="button">Voltar</a>
+                    </div>
+                    
+                </div>
+                
+            </form>
+        </section>
+        
+        
+{% endblock content %}
+
