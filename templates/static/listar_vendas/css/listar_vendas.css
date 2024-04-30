@@ -1,0 +1,14 @@
+h1{
+    margin-bottom: 20px;
+}
+
+.btn-adicionar_venda{
+    text-align: left;
+}
+.btn-anterior_proximo{
+    text-align: right;
+}
+
+.formulario{
+    font-size: 16px;
+}
