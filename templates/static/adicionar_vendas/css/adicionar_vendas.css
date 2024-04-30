@@ -6,7 +6,7 @@ h1{
 }
 .btn-voltar{
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 section {
@@ -26,11 +26,7 @@ form {
     width: 600px;
 }
 form input, form textarea{
-    width: 600px;
-    padding: 30px;
-    border-radius: 30px;
+    width: 580px;
+    padding: 20px;
+    border-radius: 10px;
 }
-
-
-
-

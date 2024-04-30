@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}    
 
+{% block head %}
+
+<link rel="stylesheet" href= "{% static 'listar_vendas/css/listar_vendas.css'%}">
+
+{% endblock head %}
       
 {% block page_title %}
     Registros de Vendas
@@ -9,8 +14,9 @@
 {% block content %}
     <h1>Registro de vendas</h1>
 
-        {% if registro_vendas_list  %}
-            <table class="table">
+    <section class='formulario'>
+        {% if page %}
+            <table class="table table-bordered table-hover table-responsive-lg">
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">ID</th>
@@ -20,36 +26,47 @@
                     <th scope="col">Nome do Produto</th>
                     <th scope="col">Preço do Produto</th>
                     <th scope="col">Situação</th>
+                    <th scope="col">Observação</th>
                     <th scope="col">Data de Venda</th>
-                    <th scope="col">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                    {% for registro in registro_vendas_list  %}
+                    {% for venda in page.object_list  %}
                 </tr>
-                        <td>{{ registro.id }}</td>
-                        <td>{{ registro.nome_cliente }}</td>
-                        <td>{{ registro.cpf_cliente }}</td>
-                        <td>{{ registro.telefone_cliente }}</td>
-                        <td>{{ registro.nome_produto }}</td>
-                        <td>{{ registro.preco_produto }}</td>
-                        <td>{{ registro.situação_produto }}</td>
-                        <td>{{ registro.data_venda }}</td>
-                        <td>
-                            <a href="#" class="btn btn-warning">Editar</a>
-                            <a href="#" class="btn btn-danger">Excluir</a>
-                        </td>
+                        <td>{{ venda.id }}</td>
+                        <td>{{ venda.nome_cliente }}</td>
+                        <td>{{ venda.cpf_cliente }}</td>
+                        <td>{{ venda.telefone_cliente }}</td>
+                        <td>{{ venda.nome_produto }}</td>
+                        <td>{{ venda.preco_produto }}</td>
+                        <td>{{ venda.situacao_produto }}</td>
+                        <td>{{ venda.observacao }}</td>
+                        <td>{{ venda.data_venda }}</td>
                     </tr>
                     {% endfor %}
                 
                 
                 </tbody>
             </table>
+            <div class="row">
+                
+                <div class="col-md btn-adicionar_venda">
+                    <a href={% url "adicionar_vendas" %} class="btn btn-success btn-lg">Adicionar venda</a>
+                </div>
+
+                <div class="col-md btn-anterior_proximo">
+                    {% if page.has_previous %}
+                        <a class="btn btn-dark btn-lg" href="{% url "listar_vendas" %}?page={{page.previous_page_number}}">Anterior</a>
+                    {% endif %}
+                    {% if page.has_next %}
+                        <a class="btn btn-dark btn-lg" href="{% url "listar_vendas" %}?page={{page.next_page_number}}">Proximo</a>
+                    {% endif %}
+                </div>
+            </div>
+
         {% else %}
             <p>Não há vendas registradas.</p>
         {% endif %}
-       
-        
-          <a href={% url "adicionar_vendas" %} class="btn btn-success btn-lg">Adicionar venda</a>
-
+    </section>
+          
 {% endblock content %}

@@ -10,13 +10,9 @@
     <title>{% block page_title %}{% endblock page_title %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand" href= {% url "listar_vendas" %}>Registro de Vendas</a>
-        </div>
-    </nav>
       
     <main class="container">
+        <br><br><br><br>
         {% block content %}{% endblock content %}
     </main>
     
