@@ -18,7 +18,7 @@ class Vendas(models.Model):
     nome_produto = models.CharField(
         verbose_name="Nome do Produto", max_length=255, null=False, blank=False
     )
-    preco_produto = models.FloatField(
+    preco_produto = models.CharField(
         verbose_name="Preço", max_length=10, null=False, blank=False
     )
     situacao_produto = models.IntegerField(
