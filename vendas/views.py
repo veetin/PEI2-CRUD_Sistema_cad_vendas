@@ -47,8 +47,5 @@ def listar_vendas(request):
         page_num = request.GET.get('page')
         page = venda_paginator.get_page(page_num)
 
-        print(f"{cliente_filtrar} - {situacao_filtrar}")
-
-
         return render(request, "listar_vendas.html", {"page": page, "cliente_filtro": cliente_filtrar, "situacao_filtro": situacao_filtrar})
     
