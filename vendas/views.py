@@ -43,7 +43,7 @@ def listar_vendas(request):
         if(situacao_filtrar):
             vendas = vendas.filter(situacao_produto__in=situacao_filtrar)
 
-        venda_paginator = Paginator(vendas, 3)
+        venda_paginator = Paginator(vendas, 10)
         page_num = request.GET.get('page')
         page = venda_paginator.get_page(page_num)
 
