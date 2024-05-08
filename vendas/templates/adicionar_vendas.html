@@ -2,12 +2,6 @@
 {% load static %}
 
 
-{% block head %}
-
-<link rel="stylesheet" href= "{% static 'adicionar_vendas/css/adicionar_vendas.css'%}">
-
-{% endblock head %}
-
 {% block page_title %}
 
     Adicionar Vendas
@@ -17,9 +11,14 @@
 {% block content %}
        
         <section class="formulario">
-            
             <form class="form-control-lg " action="{% url "adicionar_vendas" %}" method="POST" enctype='multipart/form-data'> {% csrf_token %}
+                <div>
+                    <a class=" btn btn-primary btn-lg" href={% url "listar_vendas" %} role="button">Voltar</a>
+                </div>
+                <br>
+                
                 <h1 class="titulo">Adicionar novo registro</h1>
+                <br>
                 <h2 class="titulo">Informações do Cliente</h2>
                 <hr>
     
@@ -66,15 +65,8 @@
                 <label for="">Observação:</label>
                 <textarea name="observacao" class="form-control form-control-lg"></textarea>
                 <br>
-                <div class="row">
-                    <div class="col-md btn-adicionar">
-                        <input type="submit" value="Adicionar" class="btn btn-success btn-dark-color btn-lg">
-                    </div>
-
-                    <div class="col-md btn-voltar">
-                        <a class=" btn btn-primary btn-lg" href={% url "listar_vendas" %} role="button">Voltar</a>
-                    </div>
-                    
+                <div>
+                    <input type="submit" value="Adicionar" class="btn btn-success btn-dark-color btn-lg">
                 </div>
                 
             </form>
